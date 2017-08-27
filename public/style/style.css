@@ -2,7 +2,9 @@
   position: relative;
   margin: 0 auto;
   width: 10.0rem;
-  height: 6rem;
+  max-width: 800px;
+  max-height: 1000px;
+  height: 6.2rem;
 }
 .box .head-bg {
   position: relative;
@@ -19,7 +21,7 @@
 }
 .box .head-bg .weather-box {
   position: relative;
-  height: 4.866667rem;
+  height: 3.866667rem;
   color: #fff;
 }
 .box .head-bg .weather-box .weather {
@@ -51,6 +53,7 @@
   position: relative;
   margin: 0 auto;
   width: 10.0rem;
+  max-width: 800px;
   height: 7.466667rem;
 }
 .contanier .ul1 {
@@ -60,10 +63,12 @@
   text-align: center;
   line-height: 110px;
   color: #91AD70;
+  max-width: 1024px;
 }
 .contanier .ul1 li {
   float: left;
   width: 1.42rem;
+  max-width: 145px;
 }
 .contanier .ul2 {
   position: relative;
@@ -75,11 +80,13 @@
 .contanier .ul2 li {
   float: left;
   width: 1.42rem;
+  max-width: 135px;
 }
 .contanier .ul3 {
   position: relative;
   height: 0.8rem;
   width: 10rem;
+  max-width: 1024px;
   float: left;
   text-align: center;
   color: #2EA9DF;
@@ -88,6 +95,8 @@
   float: left;
   height: 0.8rem;
   width: 1.42rem;
+  max-height: 90px;
+  max-width: 120px;
 }
 .contanier ul,
 .contanier li:after {
