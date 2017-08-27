@@ -21,13 +21,11 @@ const pic5 = document.querySelector('.pic5');
 const pic6 = document.querySelector('.pic6');
 const pic7 = document.querySelector('.pic7');
 
-
-
+//随机数
 function randomNum(m, n) {  
     return Math.floor(Math.random() * (n - m + 1) + m);  
 }
-
-// function week() {
+//获取时间
 var week = new Date().getDay();
 var week = week + 1
 var day = new Date().getDate();
@@ -66,12 +64,10 @@ var month = new Date().getMonth() + 1;
 
 var canvas = document.querySelector('#canvas');
 var context = canvas.getContext("2d");
-// console.log(canvas)
 var cWidth = 784;//canvas宽
 var cHeitht = 117.6;//canvas高
 canvas.width = cWidth;
 canvas.height = cHeitht;
-
 function canvas_max(ctx,lw,bgheight,next_y,y2,y3,y4,y5,y6) {
     var jiange = 120;
     ctx.lineWidth = lw;
@@ -98,7 +94,6 @@ function canvas_max(ctx,lw,bgheight,next_y,y2,y3,y4,y5,y6) {
     ctx.quadraticCurveTo(65 + jiange*4, -y4, jiange*5, -y5);
     ctx.moveTo(jiange*5,-y5);
     ctx.quadraticCurveTo(65 + jiange*5, -y5, jiange*6, -y6);
-
     ctx.stroke();
     ctx.closePath();    
 }
@@ -137,9 +132,8 @@ function canvas_min(ctx,lw,bgheight,next_y,y2,y3,y4,y5,y6) {
 
     ctx.stroke();
     ctx.closePath(); 
-    // console.log(1)
 }
-
+//星期几
 function weath(w1,w2,w3,w4,w5,w6,w7) {
     w_1.innerHTML = w1;
     w_2.innerHTML = w2;
@@ -149,6 +143,7 @@ function weath(w1,w2,w3,w4,w5,w6,w7) {
     w_6.innerHTML = w6;
     w_7.innerHTML = w7;
 }
+//图片位置
 function pic(p1) {
     var wumai = 'url(../img/timg.jpg) 99% 6%';
     var duoyun = 'url(../img/timg.jpg) 11% 6%';
@@ -161,11 +156,9 @@ function pic(p1) {
     if(p1 == 1) { 
         pic1.style.background = wumai;
         pic2.style.background = duoyun;
-
         pic3.style.background = qing;
         pic4.style.background = baoyu;
         pic5.style.background = bingbao;
-        
         pic6.style.background = shachenbao;
         pic7.style.background = taifeng;
         
@@ -174,72 +167,60 @@ function pic(p1) {
         console.log(2333)
         pic1.style.background = duoyun;
         pic2.style.background = qing;
-
         pic3.style.background = baoyu;
         pic4.style.background = bingbao;
-        pic5.style.background = shachenbao;
-        
+        pic5.style.background = shachenbao; 
         pic6.style.background = taifeng;
         pic7.style.background = wumai;
     }
-    if (p1 ==3) {
+    if (p1 == 3) {
         pic1.style.background = qing;
         pic2.style.background = baoyu;
-
         pic3.style.background = bingbao;
         pic4.style.background = shachenbao;
-        pic5.style.background = taifeng;
-        
+        pic5.style.background = taifeng;      
         pic6.style.background = wumai;
         pic7.style.background = duoyun;
     }
     if (p1 == 4) {
         pic2.style.background = qing;
         pic3.style.background = baoyu;
-
         pic4.style.background = bingbao;
         pic5.style.background = shachenbao;
-        pic6.style.background = taifeng;
-        
+        pic6.style.background = taifeng;        
         pic7.style.background = wumai;
         pic1.style.background = baoyu;
     }
     if (p1 == 5) {
         pic3.style.background = qing;
         pic4.style.background = baoyu;
-
         pic5.style.background = bingbao;
         pic6.style.background = shachenbao;
-        pic7.style.background = taifeng;
-        
+        pic7.style.background = taifeng;        
         pic1.style.background = wumai;
         pic2.style.background = duoyun;
     }
     if (p1 == 6) {
         pic4.style.background = qing;
         pic5.style.background = baoyu;
-
         pic6.style.background = bingbao;
         pic7.style.background = shachenbao;
-        pic1.style.background = taifeng;
-        
+        pic1.style.background = taifeng;       
         pic2.style.background = wumai;
         pic3.style.background = duoyun;
     }
     if (p1 == 7) {
         pic5.style.background = qing;
         pic6.style.background = baoyu;
-
         pic7.style.background = bingbao;
         pic1.style.background = shachenbao;
-        pic2.style.background = taifeng;
-        
+        pic2.style.background = taifeng;       
         pic3.style.background = wumai;
         pic4.style.background = duoyun;
     }
 
 } 
-
+//ajax
 ajax = function (json) {
  var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP'), //兼容老版本IE
     method = json.method || 'get',
@@ -267,19 +248,13 @@ ajax({
     method: 'POST',
     url: '/weather',
     success: function(xhr) {
-
          var jjj = JSON.parse(xhr)
-
         // for(var i=0;i<jjj.length;i++){
         console.log(jjj);
-
         weather.innerHTML = jjj[week].weather;
         temp.innerHTML = randomNum(jjj[week].min_temp,jjj[week].max_temp) + '°';
         max_min.innerHTML = jjj[week].min_temp + '~' + jjj[week].max_temp + '°';
-        time.innerHTML = month + '月' + day + '日' +' '+ weekday;
-        
-            
-        // }
+        time.innerHTML = month + '月' + day + '日' +' '+ weekday;           
     // }
         pic(jjj[week].id);
         //待优化，啊啊啊啊
@@ -288,12 +263,10 @@ ajax({
             li5.innerHTML = "星期三";
             li6.innerHTML = "星期四";
             li7.innerHTML = "星期五";
-            weath(jjj[week+6].weather, jjj[week].weather, jjj[week+1].weather, jjj[week+2].weather, jjj[week+3].weather, jjj[week+4].weather,jjj[week+5].weather);
-            
+            weath(jjj[week+6].weather, jjj[week].weather, jjj[week+1].weather, jjj[week+2].weather, jjj[week+3].weather, jjj[week+4].weather,jjj[week+5].weather);            
             canvas_max(context, 3, jjj[week].max_temp, jjj[week+1].max_temp,jjj[week+2].max_temp, jjj[week+3].max_temp, jjj[week+4].max_temp,jjj[week+5].max_temp, jjj[week+6].max_temp);
             canvas_min(context2, 3, jjj[week].min_temp, jjj[week+1].min_temp,jjj[week+2].min_temp, jjj[week+3].min_temp, jjj[week+4].min_temp,jjj[week+5].min_temp, jjj[week+6].min_temp);
-           
-    
+            
         }
         if (week == 1) {
             li4.innerHTML = "星期三";
@@ -354,9 +327,3 @@ ajax({
     // asyn: true
 })
     
-
-// function max_c() {
-
-// }
-
-
