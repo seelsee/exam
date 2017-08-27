@@ -27,28 +27,22 @@ function randomNum(m, n) {
 }
 //获取时间
 var week = new Date().getDay();
-var week = week + 1
 var day = new Date().getDate();
 var month = new Date().getMonth() + 1;
   if (week == 0) {
-    weekday = "星期日";
-    
+    weekday = "星期日"; 
   }
   else if (week == 1) {
-    weekday = "星期一";
-    
+    weekday = "星期一"; 
   }
   else if (week == 2) {
     weekday = "星期二";
-    
   }
   else if (week == 3) {
     weekday = "星期三";
-    
   }
   else if (week == 4) {
     weekday = "星期四";
-    
   }
   else if (week == 5) {
 
@@ -56,10 +50,7 @@ var month = new Date().getMonth() + 1;
   }
   else if (week == 6) {
     weekday = "星期六";
-    
   }
-
-
 //canvas max
 
 var canvas = document.querySelector('#canvas');
@@ -218,7 +209,6 @@ function pic(p1) {
         pic3.style.background = wumai;
         pic4.style.background = duoyun;
     }
-
 } 
 //ajax
 ajax = function (json) {
