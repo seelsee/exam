@@ -26,7 +26,12 @@ function randomNum(m, n) {
     return Math.floor(Math.random() * (n - m + 1) + m);  
 }
 //获取时间
-var week = new Date().getDay();
+var week = new  = {
+    date0: function () {
+        
+    }
+
+}().getDay();
 var day = new Date().getDate();
 var month = new Date().getMonth() + 1;
   if (week == 0) {
@@ -249,65 +254,44 @@ ajax({
         pic(jjj[week].id);
         //待优化，啊啊啊啊
         if (week == 0) {
-            li4.innerHTML = "星期二";
-            li5.innerHTML = "星期三";
-            li6.innerHTML = "星期四";
-            li7.innerHTML = "星期五";
+            date0();
             weath(jjj[week+6].weather, jjj[week].weather, jjj[week+1].weather, jjj[week+2].weather, jjj[week+3].weather, jjj[week+4].weather,jjj[week+5].weather);            
             canvas_max(context, 3, jjj[week].max_temp, jjj[week+1].max_temp,jjj[week+2].max_temp, jjj[week+3].max_temp, jjj[week+4].max_temp,jjj[week+5].max_temp, jjj[week+6].max_temp);
             canvas_min(context2, 3, jjj[week].min_temp, jjj[week+1].min_temp,jjj[week+2].min_temp, jjj[week+3].min_temp, jjj[week+4].min_temp,jjj[week+5].min_temp, jjj[week+6].min_temp);
             
         }
         if (week == 1) {
-            li4.innerHTML = "星期三";
-            li5.innerHTML = "星期四";
-            li6.innerHTML = "星期五";
-            li7.innerHTML = "星期六";
+            date1();
              weath(jjj[week-1].weather, jjj[week].weather, jjj[week+1].weather, jjj[week+2].weather, jjj[week+3].weather, jjj[week+4].weather,jjj[week+5].weather);
              canvas_max(context, 3, jjj[week].max_temp, jjj[week+1].max_temp,jjj[week+2].max_temp, jjj[week+3].max_temp, jjj[week+4].max_temp,jjj[week+5].max_temp, jjj[week-1].max_temp);
              canvas_min(context2, 3, jjj[week].min_temp, jjj[week+1].min_temp,jjj[week+2].min_temp, jjj[week+3].min_temp, jjj[week+4].min_temp,jjj[week+5].min_temp, jjj[week-1].min_temp);
         }
         if (week == 2) {
-            li4.innerHTML = "星期四";
-            li5.innerHTML = "星期五";
-            li6.innerHTML = "星期六";
-            li7.innerHTML = "星期日";
+            date2();
             weath(jjj[week-1].weather, jjj[week].weather, jjj[week+1].weather, jjj[week+2].weather, jjj[week+3].weather, jjj[week+4].weather,jjj[week-2].weather);
             canvas_max(context, 3, jjj[week].max_temp, jjj[week+1].max_temp,jjj[week+2].max_temp, jjj[week+3].max_temp, jjj[week+4].max_temp,jjj[week-1].max_temp, jjj[week-2].max_temp);
             canvas_min(context2, 3, jjj[week].min_temp, jjj[week+1].min_temp,jjj[week+2].min_temp, jjj[week+3].min_temp, jjj[week+4].min_temp,jjj[week-1].min_temp, jjj[week-2].min_temp);
         }
         if (week ==3) {
-            li4.innerHTML = "星期五";
-            li5.innerHTML = "星期六";
-            li6.innerHTML = "星期日";
-            li7.innerHTML = "星期一";
+            date3();
             weath(jjj[week-1].weather, jjj[week].weather, jjj[week+1].weather, jjj[week+2].weather, jjj[week+3].weather, jjj[week-3].weather,jjj[week-2].weather);
             canvas_max(context, 3, jjj[week].max_temp, jjj[week+1].max_temp,jjj[week+2].max_temp, jjj[week+3].max_temp, jjj[week-3].max_temp,jjj[week-2].max_temp, jjj[week-1].max_temp);
             canvas_min(context2, 3, jjj[week].min_temp, jjj[week+1].min_temp,jjj[week+2].min_temp, jjj[week+3].min_temp, jjj[week-3].min_temp,jjj[week-2].min_temp, jjj[week-1].min_temp);
         }
         if (week == 4) {
-            li4.innerHTML = "星期六";
-            li5.innerHTML = "星期日";
-            li6.innerHTML = "星期一";
-            li7.innerHTML = "星期二";
+            date4();
             weath(jjj[week-1].weather, jjj[week].weather, jjj[week+1].weather, jjj[week+2].weather, jjj[week-4].weather, jjj[week-3].weather,jjj[week-2].weather);
             canvas_max(context, 3, jjj[week].max_temp, jjj[week+1].max_temp,jjj[week+2].max_temp, jjj[week-4].max_temp, jjj[week-3].max_temp,jjj[week-2].max_temp, jjj[week-1].max_temp);
             canvas_min(context2, 3, jjj[week].min_temp, jjj[week+1].min_temp,jjj[week+2].min_temp, jjj[week-4].min_temp, jjj[week-3].min_temp,jjj[week-2].min_temp, jjj[week-1].min_temp);
         }
         if (week == 5) {
-            li4.innerHTML = "星期日";
-            li5.innerHTML = "星期一";
-            li6.innerHTML = "星期二";
-            li7.innerHTML = "星期三";
+            date5();
             weath(jjj[week-1].weather, jjj[week].weather, jjj[week+1].weather, jjj[week-5].weather, jjj[week-4].weather, jjj[week-3].weather,jjj[week-2].weather);
             canvas_max(context, 3, jjj[week].max_temp, jjj[week+1].max_temp,jjj[week-5].max_temp, jjj[week-4].max_temp, jjj[week-3].max_temp,jjj[week-2].max_temp, jjj[week-1].max_temp);
             canvas_min(context2, 3, jjj[week].min_temp, jjj[week+1].min_temp,jjj[week-5].min_temp, jjj[week-4].min_temp, jjj[week-3].min_temp,jjj[week-2].min_temp, jjj[week-1].min_temp);
         }
         if (week == 6) {
-            li4.innerHTML = "星期一";
-            li5.innerHTML = "星期二";
-            li6.innerHTML = "星期三";
-            li7.innerHTML = "星期四";
+            date6();
             weath(jjj[week-1].weather, jjj[week].weather, jjj[week-6].weather, jjj[week-5].weather, jjj[week-4].weather, jjj[week-3].weather,jjj[week-2].weather);
             canvas_max(context, 3, jjj[week].max_temp, jjj[week-6].max_temp,jjj[week-5].max_temp, jjj[week-4].max_temp, jjj[week-3].max_temp,jjj[week-2].max_temp, jjj[week-1].max_temp);
             canvas_min(context2, 3, jjj[week].min_temp, jjj[week-6].min_temp,jjj[week-5].min_temp, jjj[week-4].min_temp, jjj[week-3].min_temp,jjj[week-2].min_temp, jjj[week-1].min_temp);
@@ -316,4 +300,51 @@ ajax({
     },
     // asyn: true
 })
-    
+function date0() {
+	li4.innerHTML = "星期二";
+    li5.innerHTML = "星期三";
+    li6.innerHTML = "星期四";
+    li7.innerHTML = "星期五";
+}   
+function date1() {
+	li4.innerHTML = "星期三";
+    li5.innerHTML = "星期四";
+    li6.innerHTML = "星期五";
+    li7.innerHTML = "星期六";
+}
+function date2() {
+	li4.innerHTML = "星期四";
+    li5.innerHTML = "星期五";
+    li6.innerHTML = "星期六";
+    li7.innerHTML = "星期日";	
+}
+function date3() {
+    li4.innerHTML = "星期五";
+    li5.innerHTML = "星期六";
+    li6.innerHTML = "星期日";
+    li7.innerHTML = "星期一";
+}
+function date4() {
+    li4.innerHTML = "星期六";
+    li5.innerHTML = "星期日";
+    li6.innerHTML = "星期一";
+    li7.innerHTML = "星期二";
+}
+function date5() {
+    li4.innerHTML = "星期日";
+    li5.innerHTML = "星期一";
+    li6.innerHTML = "星期二";
+    li7.innerHTML = "星期三";
+}
+function date6() {
+    li4.innerHTML = "星期一";
+    li5.innerHTML = "星期二";
+    li6.innerHTML = "星期三";
+    li7.innerHTML = "星期四";
+}
+var date = {
+    date0: function () {
+        
+    }
+
+}
