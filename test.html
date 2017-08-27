@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+
+// var canvas = document.querySelector('#canvas');
+// var context = canvas.getContext("2d");
+console.log(canvas)
+
+
+
+canvas = document.getElementById("canvas");
+context = canvas.getContext("2d")
+var cWidth = 784;//canvas宽
+var cHeitht = 117.6;//canvas高
+ canvas.width = cWidth;
+ canvas.height = cHeitht;
+ function canvas_max(ctx,lw) {
+     ctx.lineWidth = lw;
+     ctx.strokeStyle = "rgb(255,121,41)";
+     ctx.translate(0,100);
+     ctx.beginPath();
+     ctx.moveTo(0, -21);
+     ctx.quadraticCurveTo(0, -21, 204, -20);
+     
+     ctx.moveTo(204, -20);
+     ctx.quadraticCurveTo(250, -20, 304, -30);
+     ctx.stroke();
+
+     
+}
+canvas_max(context,2);
+    </script>
+</body>
+</html>

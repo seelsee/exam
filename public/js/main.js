@@ -9,6 +9,7 @@ function randomNum(m, n) {
 
 // function week() {
 var week = new Date().getDay();
+// var week =6
 var day = new Date().getDate();
 var month = new Date().getMonth() + 1;
   if (week == 0) {
@@ -39,38 +40,42 @@ var month = new Date().getMonth() + 1;
     weekday = "星期六";
     
   }
-// function isNumber(value) {
-//     var patrn = /^[0-9]*$/;
-//     if (patrn.exec(value) == null || value == "") {
-//         return false
-//     } else {
-//         return true
-//     }
-// }
-
-// console.log(isNumber(week1));
 
 
+//canvas
 
+var canvas = document.querySelector('#canvas');
+var context = canvas.getContext("2d");
+console.log(canvas)
+var cWidth = 784;//canvas宽
+var cHeitht = 117.6;//canvas高
+ canvas.width = cWidth;
+ canvas.height = cHeitht;
 
+ function canvas_max(ctx,lw,bgheight,next_y,y2,y3,y4,y5,y6) {
+    var jiange = 120;
+     ctx.lineWidth = lw;
+     ctx.strokeStyle = "rgb(255,121,41)";
+     ctx.translate(20,70);
+     ctx.beginPath();
+     ctx.moveTo(0, -bgheight);
+     ctx.quadraticCurveTo(65, -bgheight, jiange, -next_y);
+     ctx.moveTo(jiange,-next_y);
+     ctx.quadraticCurveTo(65 + jiange, -next_y, jiange*2, -y2);
+     ctx.moveTo(jiange*2,-y2);
+     ctx.quadraticCurveTo(65 + jiange*2, -y2, jiange*3, -y3);
+     ctx.moveTo(jiange*3,-y3);
+     ctx.quadraticCurveTo(65 + jiange*3, -y3, jiange*4, -y4);
+     ctx.moveTo(jiange*4,-y4);
+     ctx.quadraticCurveTo(65 + jiange*4, -y4, jiange*5, -y5);
+     ctx.moveTo(jiange*5,-y5);
+     ctx.quadraticCurveTo(65 + jiange*5, -y4, jiange*6, -y6);
 
+     ctx.stroke();
+     ctx.closePath();
+     
+}
 
-
-
-
-
-
-
-
-// var $ = function (sel) {
-//     var domArr = document.querySelectorAll(sel),
-//     l = domArr.length;
-//     if(l === 1) {
-//         return domArr[0]
-//     } else {
-//         return domArr;
-//         }
-// }
 
 
     
@@ -98,34 +103,56 @@ ajax = function (json) {
         xhr.send(data);
 }
 
-
-// var x = week1 +6;
-
 ajax({
     method: 'POST',
     url: '/weather',
     success: function(xhr) {
-        // var json = JSON.parse(xhr);
-        // console.log(xhr)
+
          var jjj = JSON.parse(xhr)
-        // console.log()
-        // console.log(JSON.stringify(xhr));
-        // console.log(xhr.id);
-        for(var i=0;i<jjj.length;i++){
-        console.log(jjj[i]);
-        // console.log(jjj[i].max_temp);
-        // if (week == 0) {
+
+        // for(var i=0;i<jjj.length;i++){
+        console.log(jjj);
+
         weather.innerHTML = jjj[week].weather;
         temp.innerHTML = randomNum(jjj[week].min_temp,jjj[week].max_temp) + '°';
         max_min.innerHTML = jjj[week].min_temp + '~' + jjj[week].max_temp + '°';
         time.innerHTML = month + '月' + day + '日' +' '+ weekday;
-
+       
             
         // }
-    }
-        
+    // }
+
+        if (week == 0) {
+            canvas_max(context, 3, jjj[week].max_temp, jjj[week+1].max_temp,jjj[week+2].max_temp, jjj[week+3].max_temp, jjj[week+4].max_temp,jjj[week+5].max_temp, jjj[week+6].max_temp);
+           
+            
+        }
+        if (week == 1) {
+             canvas_max(context, 3, jjj[week].max_temp, jjj[week+1].max_temp,jjj[week+2].max_temp, jjj[week+3].max_temp, jjj[week+4].max_temp,jjj[week+5].max_temp, jjj[week-1].max_temp);
+        }
+        if (week == 2) {
+            canvas_max(context, 3, jjj[week].max_temp, jjj[week+1].max_temp,jjj[week+2].max_temp, jjj[week+3].max_temp, jjj[week+4].max_temp,jjj[week-1].max_temp, jjj[week-2].max_temp);
+        }
+        if (week ==3) {
+            canvas_max(context, 3, jjj[week].max_temp, jjj[week+1].max_temp,jjj[week+2].max_temp, jjj[week+3].max_temp, jjj[week-3].max_temp,jjj[week-2].max_temp, jjj[week-1].max_temp);
+        }
+        if (week == 4) {
+            canvas_max(context, 3, jjj[week].max_temp, jjj[week+1].max_temp,jjj[week+2].max_temp, jjj[week-4].max_temp, jjj[week-3].max_temp,jjj[week-2].max_temp, jjj[week-1].max_temp);
+        }
+        if (week == 5) {
+            canvas_max(context, 3, jjj[week].max_temp, jjj[week+1].max_temp,jjj[week-5].max_temp, jjj[week-4].max_temp, jjj[week-3].max_temp,jjj[week-2].max_temp, jjj[week-1].max_temp);
+        }
+        if (week == 6) {
+            canvas_max(context, 3, jjj[week].max_temp, jjj[week-6].max_temp,jjj[week-5].max_temp, jjj[week-4].max_temp, jjj[week-3].max_temp,jjj[week-2].max_temp, jjj[week-1].max_temp);
+        }
      
     },
     // asyn: true
 })
     
+
+// function max_c() {
+    
+// }
+
+
