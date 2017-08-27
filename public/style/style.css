@@ -17,7 +17,13 @@
   height: 0.48rem;
 }
 .box .head-bg .place {
+  color: #DB4D6D;
+  font-size: 100px;
+  text-align: center;
   height: 1.853333rem;
+}
+.box .head-bg .place:hover {
+  color: #9E7A7A;
 }
 .box .head-bg .weather-box {
   position: relative;

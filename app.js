@@ -8,7 +8,6 @@ var express = require('express');
 var app = express();
 var arr = [];
 
-
 var connection = mysql.createConnection({     
     host     : 'localhost',       
     user     : 'root',              
@@ -39,11 +38,9 @@ connection.query('SELECT * from data',function(err,rows,fields) {
 app.use(express.static(path.join(__dirname, 'public')))
 app.get('/', function (req, res) {
 
-    
 });
 app.post('/weather', function (req, res) {
     res.json(arr);
-    
     
 });
 
