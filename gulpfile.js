@@ -6,5 +6,5 @@ gulp.task('default', () =>
         .pipe(babel({
             presets: ['env']
         }))
-        .pipe(gulp.dest('dist'))
+        .pipe(gulp.dest('public/dist'))
 );
