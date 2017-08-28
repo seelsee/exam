@@ -60,13 +60,12 @@
   position: relative;
   margin: 0 auto;
   width: 10.0rem;
-  max-width: 800px;
   height: 7.466667rem;
 }
 .contanier .ul1 {
   position: relative;
+  margin: 0 auto;
   height: 1rem;
-  float: left;
   text-align: center;
   line-height: 110px;
   color: #91AD70;
@@ -81,8 +80,10 @@
 }
 .contanier .ul2 {
   position: relative;
+  margin: 0 auto;
   height: 0.7rem;
-  float: left;
+  max-width: 800px;
+  max-height: 500px;
   text-align: center;
   color: #2EA9DF;
 }
@@ -93,33 +94,35 @@
 }
 .contanier .ul3 {
   position: relative;
+  margin: 0 auto;
   height: 0.8rem;
   width: 10rem;
-  max-width: 1024px;
-  float: left;
+  max-width: 800px;
   text-align: center;
   color: #2EA9DF;
 }
 .contanier .ul3 li {
   float: left;
   height: 0.8rem;
-  width: 1.42rem;
+  width: 1.40rem;
   max-height: 90px;
-  max-width: 115px;
+  max-width: 114px;
 }
 .contanier ul,
 .contanier li:after {
   clear: both;
 }
 .contanier .canmax {
-  position: absolute;
-  top: 2rem;
+  position: relative;
+  margin: 0 auto;
   height: 1rem;
   width: 10.0rem;
+  max-width: 800px;
 }
 .contanier .canmin {
-  position: absolute;
-  top: 3rem;
+  position: relative;
+  margin: 0 auto;
   height: 1rem;
   width: 10.0rem;
+  max-width: 800px;
 }

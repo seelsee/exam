@@ -36,6 +36,12 @@ connection.query('SELECT * from data',function(err,rows,fields) {
   })
 
 app.use(express.static(path.join(__dirname, 'public')))
+// app.use(express.static(path.join( 'dist')))
+// app.use(express.static(path.join(__dirname, 'dist')));
+
+// app.use(express.static('dist'));
+// app.use(express.static('files'));
+
 app.get('/', function (req, res) {
 
 });
