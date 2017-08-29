@@ -1,13 +1,9 @@
-
-var mysql = require('mysql');
-
+const mysql = require('mysql');
 const path = require('path')
-
-
-var express = require('express');
+const express = require('express');
 var app = express();
 var arr = [];
-
+//数据库操作
 var connection = mysql.createConnection({     
     host     : 'localhost',       
     user     : 'root',              
@@ -36,13 +32,9 @@ connection.query('SELECT * from data',function(err,rows,fields) {
   })
 
 app.use(express.static(path.join(__dirname, 'public')))
-// app.use("/", express.static(__dirname + "/public"));
-// app.use("/", express.static(__dirname + "/dist"));
-// app.use(express.static(path.join( 'dist')))
-// app.use(express.static(path.join(__dirname, 'dist')));
 
+// app.use(express.static('public'));
 // app.use(express.static('dist'));
-// app.use(express.static('files'));
 
 app.get('/', function (req, res) {
 

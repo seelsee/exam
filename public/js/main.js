@@ -1,3 +1,4 @@
+'use strict'
 const weather = document.querySelector('.weather');
 const temp = document.querySelector('.temp');
 const max_min = document.querySelector('.max_min');
@@ -30,21 +31,27 @@ var week = new Date().getDay();
 var day = new Date().getDate();
 var month = new Date().getMonth() + 1;
 var weekday;
-if (week == 0) {
-    weekday = "星期日"; 
-} else if (week == 1) {
-    weekday = "星期一"; 
-} else if (week == 2) {
-    weekday = "星期二";
-} else if (week == 3) {
-    weekday = "星期三";
-} else if (week == 4) {
-    weekday = "星期四";
-} else if (week == 5) {
-    weekday = "星期五";
-} else if (week == 6) {
-    weekday = "星期六";
-}
+    if (week == 0) {
+        weekday = "星期日"; 
+    }
+    else if (week == 1) {
+        weekday = "星期一"; 
+    }
+    else if (week == 2) {
+        weekday = "星期二";
+    }
+    else if (week == 3) {
+        weekday = "星期三";
+    }
+    else if (week == 4) {
+        weekday = "星期四";
+    }
+    else if (week == 5) {
+        weekday = "星期五";
+    }
+    else if (week == 6) {
+        weekday = "星期六";
+    }
 
 //canvas max
 var canvas = document.querySelector('#canvas');
@@ -53,27 +60,27 @@ var cWidth = 784;//canvas宽
 var cHeitht = 117.6;//canvas高
 canvas.width = cWidth;
 canvas.height = cHeitht;
-function canvas_max(ctx, lw, bgheight, next_y, y2, y3, y4, y5, y6, color) {
+function canvas_max(ctx, lw, bgheight, next_y, y2, y3, y4, y5, y6, color, originY) {
     var jiange = 120;
     ctx.lineWidth = lw;
     ctx.strokeStyle = color;
-    ctx.translate(20, 100);
+    ctx.translate(20, originY);
     ctx.beginPath();
     ctx.font="normal 20px Arial";
-    ctx.fillText(bgheight + '°', 0, -bgheight + 20);
-    ctx.fillText(next_y + '°',jiange, -next_y + 20);
-    ctx.fillText(y2 + '°', jiange * 2, -y2+ 20);
-    ctx.fillText(y3 + '°', jiange * 3, -y3 + 20);
-    ctx.fillText(y4 + '°', jiange * 4, -y4 + 20);
-    ctx.fillText(y5 + '°', jiange * 5, -y5 + 20);
-    ctx.fillText(y6 + '°', jiange * 6 - 20, -y6 + 20);
+    ctx.fillText(bgheight + '°',0,-bgheight + 20);
+    ctx.fillText(next_y + '°',jiange,-next_y + 20);
+    ctx.fillText(y2 + '°', jiange * 2,-y2 + 20);
+    ctx.fillText(y3 + '°', jiange * 3,-y3 + 20);
+    ctx.fillText(y4 + '°', jiange * 4,-y4 + 20);
+    ctx.fillText(y5 + '°', jiange * 5,-y5 + 20);
+    ctx.fillText(y6 + '°', jiange * 6 - 20,-y6 + 20);
     ctx.moveTo(0, -bgheight);
     ctx.quadraticCurveTo(65, -bgheight, jiange, -next_y);
-    ctx.moveTo(jiange,-next_y);
+    ctx.moveTo(jiange, -next_y);
     ctx.quadraticCurveTo(65 + jiange, -next_y, jiange * 2, -y2);
     ctx.moveTo(jiange * 2, -y2);
     ctx.quadraticCurveTo(65 + jiange * 2, -y2, jiange * 3, -y3);
-    ctx.moveTo(jiange* 3, -y3);
+    ctx.moveTo(jiange * 3, -y3);
     ctx.quadraticCurveTo(65 + jiange * 3, -y3, jiange * 4, -y4);
     ctx.moveTo(jiange * 4, -y4);
     ctx.quadraticCurveTo(65 + jiange * 4, -y4, jiange * 5, -y5);
@@ -88,6 +95,7 @@ var canvas2 = document.querySelector('#canvas2');
 var context2 = canvas2.getContext("2d");
 canvas2.width = cWidth;
 canvas2.height = cHeitht;
+
 //星期几
 function weath(w1, w2, w3, w4, w5, w6, w7) {
     w_1.innerHTML = w1;
@@ -210,55 +218,55 @@ ajax({
     // }
         pic(json[week].id);
         var hot = "#FF7929";
-        var cold = "#00A3CF";
+        var cold = "#00A3CF"
         //待优化，啊啊啊啊
         if (week == 0) {
             date.date0();
             weath(json[week + 6].weather, json[week ] .weather, json[week + 1].weather, json[week + 2].weather, json[week + 3].weather, json[week + 4].weather, json[week + 5].weather);            
-            canvas_max(context, 3, json[week ] .max_temp, json[week + 1].max_temp, json[week + 2].max_temp, json[week + 3].max_temp, json[week + 4].max_temp, json[week + 5].max_temp, json[week + 6].max_temp, hot);
-            canvas_min(context2, 3, json[week ] .min_temp, json[week + 1].min_temp, json[week + 2].min_temp, json[week + 3].min_temp, json[week + 4].min_temp, json[week + 5].min_temp, json[week + 6].min_temp, cold);
+            canvas_max(context, 3, json[week ] .max_temp, json[week + 1].max_temp, json[week + 2].max_temp, json[week + 3].max_temp, json[week + 4].max_temp, json[week + 5].max_temp, json[week + 6].max_temp, hot, 100);
+            canvas_min(context2, 3, json[week ] .min_temp, json[week + 1].min_temp, json[week + 2].min_temp, json[week + 3].min_temp, json[week + 4].min_temp, json[week + 5].min_temp, json[week + 6].min_temp, cold, 60);
             
         }
-        if (week   == 1) {
+        if (week == 1) {
             date.date1();
              weath(json[week - 1].weather, json[week ] .weather, json[week + 1].weather, json[week + 2].weather, json[week + 3].weather, json[week + 4].weather,json[week + 5].weather);
-             canvas_max(context, 3, json[week ] .max_temp, json[week + 1].max_temp, json[week + 2].max_temp, json[week + 3].max_temp, json[week + 4].max_temp,json[week + 5].max_temp, json[week - 1].max_temp, hot);
-             canvas_max(context2, 3, json[week ] .min_temp, json[week + 1].min_temp, json[week + 2].min_temp, json[week + 3].min_temp, json[week + 4].min_temp,json[week + 5].min_temp, json[week - 1].min_temp, cold);
+             canvas_max(context, 3, json[week ] .max_temp, json[week + 1].max_temp, json[week + 2].max_temp, json[week + 3].max_temp, json[week + 4].max_temp,json[week + 5].max_temp, json[week - 1].max_temp, hot, 100);
+             canvas_max(context2, 3, json[week ] .min_temp, json[week + 1].min_temp, json[week + 2].min_temp, json[week + 3].min_temp, json[week + 4].min_temp,json[week + 5].min_temp, json[week - 1].min_temp, cold, 60);
         }
-        if (week   == 2) {
+        if (week == 2) {
             date.date2();
             weath(json[week - 1].weather, json[week ] .weather, json[week + 1].weather, json[week + 2].weather, json[week + 3].weather, json[week + 4].weather,json[week - 2].weather);
-            canvas_max(context, 3, json[week ] .max_temp, json[week + 1].max_temp, json[week + 2].max_temp, json[week + 3].max_temp, json[week + 4].max_temp,json[week - 1].max_temp, json[week - 2].max_temp, hot);
-            canvas_max(context2, 3, json[week ] .min_temp, json[week + 1].min_temp, json[week + 2].min_temp, json[week + 3].min_temp, json[week + 4].min_temp,json[week - 1].min_temp, json[week - 2].min_temp, cold);
+            canvas_max(context, 3, json[week ] .max_temp, json[week + 1].max_temp, json[week + 2].max_temp, json[week + 3].max_temp, json[week + 4].max_temp,json[week - 1].max_temp, json[week - 2].max_temp, hot, 100);
+            canvas_max(context2, 3, json[week ] .min_temp, json[week + 1].min_temp, json[week + 2].min_temp, json[week + 3].min_temp, json[week + 4].min_temp,json[week - 1].min_temp, json[week - 2].min_temp, cold, 60);
         }
-        if (week   ==3) {
+        if (week ==3) {
             date.date3();
             weath(json[week - 1].weather, json[week ] .weather, json[week + 1].weather, json[week + 2].weather, json[week + 3].weather, json[week - 3].weather, json[week - 2].weather);
-            canvas_max(context, 3, json[week ] .max_temp, json[week + 1].max_temp, json[week + 2].max_temp, json[week + 3].max_temp, json[week - 3].max_temp, json[week - 2].max_temp, json[week - 1].max_temp, hot);
-            canvas_max(context2, 3, json[week ] .min_temp, json[week + 1].min_temp, json[week + 2].min_temp, json[week + 3].min_temp, json[week - 3].min_temp, json[week - 2].min_temp, json[week - 1].min_temp, cold);
+            canvas_max(context, 3, json[week ] .max_temp, json[week + 1].max_temp, json[week + 2].max_temp, json[week + 3].max_temp, json[week - 3].max_temp, json[week - 2].max_temp, json[week - 1].max_temp, hot, 100);
+            canvas_max(context2, 3, json[week ] .min_temp, json[week + 1].min_temp, json[week + 2].min_temp, json[week + 3].min_temp, json[week - 3].min_temp, json[week - 2].min_temp, json[week - 1].min_temp, cold, 60);
         }
-        if (week   == 4) {
+        if (week == 4) {
             date.date4();
             weath(json[week - 1].weather, json[week ] .weather, json[week + 1].weather, json[week + 2].weather, json[week - 4].weather, json[week - 3].weather, json[week - 2].weather);
-            canvas_max(context, 3, json[week ] .max_temp, json[week + 1].max_temp , json[week + 2].max_temp, json[week - 4].max_temp, json[week - 3].max_temp, json[week - 2].max_temp, json[week - 1].max_temp, hot);
-            canvas_max(context2, 3, json[week ] .min_temp, json[week + 1].min_temp, json[week + 2].min_temp, json[week - 4].min_temp, json[week - 3].min_temp, json[week - 2].min_temp, json[week - 1].min_temp, cold);
+            canvas_max(context, 3, json[week ] .max_temp, json[week + 1].max_temp , json[week + 2].max_temp, json[week - 4].max_temp, json[week - 3].max_temp, json[week - 2].max_temp, json[week - 1].max_temp, hot, 100);
+            canvas_max(context2, 3, json[week ] .min_temp, json[week + 1].min_temp, json[week + 2].min_temp, json[week - 4].min_temp, json[week - 3].min_temp, json[week - 2].min_temp, json[week - 1].min_temp,cold, 60);
         }
-        if (week   == 5) {
+        if (week == 5) {
             date.date5();
             weath(json[week - 1].weather, json[week ] .weather, json[week + 1].weather, json[week - 5].weather, json[week - 4].weather, json[week - 3].weather, json[week - 2].weather);
-            canvas_max(context, 3, json[week ] .max_temp, json[week + 1].max_temp,json[week - 5].max_temp, json[week - 4].max_temp, json[week - 3].max_temp, json[week - 2].max_temp, json[week - 1].max_temp, hot);
-            canvas_max(context2, 3, json[week ] .min_temp, json[week + 1].min_temp,json[week - 5].min_temp, json[week - 4].min_temp, json[week - 3].min_temp, json[week - 2].min_temp, json[week - 1].min_temp, cold);
+            canvas_max(context, 3, json[week ] .max_temp, json[week + 1].max_temp,json[week - 5].max_temp, json[week - 4].max_temp, json[week - 3].max_temp, json[week - 2].max_temp, json[week - 1].max_temp, hot, 100);
+            canvas_max(context2, 3, json[week ] .min_temp, json[week + 1].min_temp,json[week - 5].min_temp, json[week - 4].min_temp, json[week - 3].min_temp, json[week - 2].min_temp, json[week - 1].min_temp, cold, 60);
         }
-        if (week   == 6) {
+        if (week == 6) {
             date.date6();
             weath(json[week - 1].weather, json[week ] .weather, json[week - 6].weather, json[week - 5].weather, json[week - 4].weather, json[week - 3].weather, json[week - 2].weather);
-            canvas_max(context, 3, json[week ] .max_temp, json[week - 6].max_temp, json[week - 5].max_temp, json[week - 4].max_temp, json[week - 3].max_temp, json[week - 2].max_temp, json[week - 1].max_temp, hot);
-            canvas_max(context2, 3, json[week ] .min_temp, json[week - 6].min_temp, json[week - 5].min_temp, json[week - 4].min_temp, json[week - 3].min_temp, json[week - 2].min_temp, json[week - 1].min_temp, cold);
+            canvas_max(context, 3, json[week ] .max_temp, json[week - 6].max_temp, json[week - 5].max_temp, json[week - 4].max_temp, json[week - 3].max_temp, json[week - 2].max_temp, json[week - 1].max_temp, hot, 100);
+            canvas_max(context2, 3, json[week ] .min_temp, json[week - 6].min_temp, json[week - 5].min_temp, json[week - 4].min_temp, json[week - 3].min_temp, json[week - 2].min_temp, json[week - 1].min_temp, cold, 60);
         }
      
-    }
+    },
     // asyn: true
-});
+})
 
 var date = {
     date0:  ()=> {
