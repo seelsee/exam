@@ -15,13 +15,7 @@ const w_4 = document.querySelector('.w_4');
 const w_5 = document.querySelector('.w_5');
 const w_6 = document.querySelector('.w_6');
 const w_7 = document.querySelector('.w_7');
-const pic1 = document.querySelector('.pic1');
-const pic2 = document.querySelector('.pic2');
-const pic3 = document.querySelector('.pic3');
-const pic4 = document.querySelector('.pic4');
-const pic5 = document.querySelector('.pic5');
-const pic6 = document.querySelector('.pic6');
-const pic7 = document.querySelector('.pic7');
+const ul3 = document.querySelector('.ul3').getElementsByTagName('li');
 
 //随机数
 function randomNum(m, n) {  
@@ -94,6 +88,9 @@ function weath(w1, w2, w3, w4, w5, w6, w7) {
     w_7.innerHTML = w7;
 }
 
+// ul3.getElementsByTagName('li');
+// console.log(ul3.getElementsByTagName('li')[0]);
+// console.log(ul3)
 //图片位置
 function pic(p1) {
     let smog = 'url(../img/timg.jpg) 99% 6%';
@@ -104,68 +101,29 @@ function pic(p1) {
     let sandstorms = 'url(../img/timg.jpg) 100% 23%';
     let typhoon = 'url(../img/timg.jpg) 85% 6%'
     //星期天
-    if(p1 == 1) { 
-        pic1.style.background = smog;
-        pic2.style.background = cloudy;
-        pic3.style.background = sunny;
-        pic4.style.background = rainstorm;
-        pic5.style.background = hail;
-        pic6.style.background = sandstorms;
-        pic7.style.background = typhoon;
-    }
-    if (p1 == 2) {
-        pic1.style.background = cloudy;
-        pic2.style.background = sunny;
-        pic3.style.background = rainstorm;
-        pic4.style.background = hail;
-        pic5.style.background = sandstorms; 
-        pic6.style.background = typhoon;
-        pic7.style.background = smog;
-    }
-    if (p1 == 3) {
-        pic1.style.background = sunny;
-        pic2.style.background = rainstorm;
-        pic3.style.background = hail;
-        pic4.style.background = sandstorms;
-        pic5.style.background = typhoon;      
-        pic6.style.background = smog;
-        pic7.style.background = cloudy;
-    }
-    if (p1 == 4) {
-        pic2.style.background = sunny;
-        pic3.style.background = rainstorm;
-        pic4.style.background = hail;
-        pic5.style.background = sandstorms;
-        pic6.style.background = typhoon;        
-        pic7.style.background = smog;
-        pic1.style.background = rainstorm;
-    }
-    if (p1 == 5) {
-        pic3.style.background = sunny;
-        pic4.style.background = rainstorm;
-        pic5.style.background = hail;
-        pic6.style.background = sandstorms;
-        pic7.style.background = typhoon;        
-        pic1.style.background = smog;
-        pic2.style.background = cloudy;
-    }
-    if (p1 == 6) {
-        pic4.style.background = sunny;
-        pic5.style.background = rainstorm;
-        pic6.style.background = hail;
-        pic7.style.background = sandstorms;
-        pic1.style.background = typhoon;       
-        pic2.style.background = smog;
-        pic3.style.background = cloudy;
-    }
-    if (p1 == 7) {
-        pic5.style.background = sunny;
-        pic6.style.background = rainstorm;
-        pic7.style.background = hail;
-        pic1.style.background = sandstorms;
-        pic2.style.background = typhoon;       
-        pic3.style.background = smog;
-        pic4.style.background = cloudy;
+    for(let i = 0;i < 7;i++) {
+        var array = [smog, cloudy, sunny, rainstorm, hail, sandstorms, typhoon, smog, cloudy, sunny, rainstorm, hail, sandstorms, typhoon];
+            if(p1 == 1) {
+                ul3[i].style.background = array[i];
+            }
+            if(p1 == 2) {
+                ul3[i].style.background = array[i + 1];
+            }
+            if(p1 == 3) {
+                ul3[i].style.background = array[i + 2];
+            }
+            if(p1 == 4) {
+                ul[i].style.background = array[i + 3];
+            }
+            if(p1 == 5) {
+                ul[i].style.background = array[i + 4];
+            }
+            if(p1 == 6) {
+                ul3[i].style.background = array[i + 5];
+            }
+            if(p1 == 7) {
+                ul3[i].style.background = array[i + 6];     
+            }
     }
 } 
 //ajax
