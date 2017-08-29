@@ -1,6 +1,6 @@
 # exam
 
-### install
+### run
 
 ```
 npm install

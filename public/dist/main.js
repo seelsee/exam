@@ -27,25 +27,17 @@ var pic7 = document.querySelector('.pic7');
 function randomNum(m, n) {
     return Math.floor(Math.random() * (n - m + 1) + m);
 }
+
 //获取时间
 var week = new Date().getDay();
 var day = new Date().getDate();
 var month = new Date().getMonth() + 1;
 var weekday;
-if (week == 0) {
-    weekday = "星期日";
-} else if (week == 1) {
-    weekday = "星期一";
-} else if (week == 2) {
-    weekday = "星期二";
-} else if (week == 3) {
-    weekday = "星期三";
-} else if (week == 4) {
-    weekday = "星期四";
-} else if (week == 5) {
-    weekday = "星期五";
-} else if (week == 6) {
-    weekday = "星期六";
+for (var i = 0; i < 7; i++) {
+    var a = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+    if (week == i) {
+        weekday = a[i];
+    }
 }
 
 //canvas max
@@ -56,31 +48,31 @@ var cHeitht = 117.6; //canvas高
 canvas.width = cWidth;
 canvas.height = cHeitht;
 function canvas_max(ctx, lw, bgheight, next_y, y2, y3, y4, y5, y6, color, originY) {
-    var jiange = 120;
+    var interval = 120;
     ctx.lineWidth = lw;
     ctx.strokeStyle = color;
     ctx.translate(20, originY);
     ctx.beginPath();
     ctx.font = "normal 20px Arial";
     ctx.fillText(bgheight + '°', 0, -bgheight + 20);
-    ctx.fillText(next_y + '°', jiange, -next_y + 20);
-    ctx.fillText(y2 + '°', jiange * 2, -y2 + 20);
-    ctx.fillText(y3 + '°', jiange * 3, -y3 + 20);
-    ctx.fillText(y4 + '°', jiange * 4, -y4 + 20);
-    ctx.fillText(y5 + '°', jiange * 5, -y5 + 20);
-    ctx.fillText(y6 + '°', jiange * 6 - 20, -y6 + 20);
+    ctx.fillText(next_y + '°', interval, -next_y + 20);
+    ctx.fillText(y2 + '°', interval * 2, -y2 + 20);
+    ctx.fillText(y3 + '°', interval * 3, -y3 + 20);
+    ctx.fillText(y4 + '°', interval * 4, -y4 + 20);
+    ctx.fillText(y5 + '°', interval * 5, -y5 + 20);
+    ctx.fillText(y6 + '°', interval * 6 - 20, -y6 + 20);
     ctx.moveTo(0, -bgheight);
-    ctx.quadraticCurveTo(65, -bgheight, jiange, -next_y);
-    ctx.moveTo(jiange, -next_y);
-    ctx.quadraticCurveTo(65 + jiange, -next_y, jiange * 2, -y2);
-    ctx.moveTo(jiange * 2, -y2);
-    ctx.quadraticCurveTo(65 + jiange * 2, -y2, jiange * 3, -y3);
-    ctx.moveTo(jiange * 3, -y3);
-    ctx.quadraticCurveTo(65 + jiange * 3, -y3, jiange * 4, -y4);
-    ctx.moveTo(jiange * 4, -y4);
-    ctx.quadraticCurveTo(65 + jiange * 4, -y4, jiange * 5, -y5);
-    ctx.moveTo(jiange * 5, -y5);
-    ctx.quadraticCurveTo(65 + jiange * 5, -y5, jiange * 6, -y6);
+    ctx.quadraticCurveTo(65, -bgheight, interval, -next_y);
+    ctx.moveTo(interval, -next_y);
+    ctx.quadraticCurveTo(65 + interval, -next_y, interval * 2, -y2);
+    ctx.moveTo(interval * 2, -y2);
+    ctx.quadraticCurveTo(65 + interval * 2, -y2, interval * 3, -y3);
+    ctx.moveTo(interval * 3, -y3);
+    ctx.quadraticCurveTo(65 + interval * 3, -y3, interval * 4, -y4);
+    ctx.moveTo(interval * 4, -y4);
+    ctx.quadraticCurveTo(65 + interval * 4, -y4, interval * 5, -y5);
+    ctx.moveTo(interval * 5, -y5);
+    ctx.quadraticCurveTo(65 + interval * 5, -y5, interval * 6, -y6);
     ctx.stroke();
     ctx.closePath();
 }
@@ -101,78 +93,79 @@ function weath(w1, w2, w3, w4, w5, w6, w7) {
     w_6.innerHTML = w6;
     w_7.innerHTML = w7;
 }
+
 //图片位置
 function pic(p1) {
-    var wumai = 'url(../img/timg.jpg) 99% 6%';
-    var duoyun = 'url(../img/timg.jpg) 11% 6%';
-    var qing = 'url(../img/timg.jpg) 0% 6%';
-    var baoyu = 'url(../img/timg.jpg) 35% 22%';
-    var bingbao = 'url(../img/timg.jpg) 86% 23%';
-    var shachenbao = 'url(../img/timg.jpg) 100% 23%';
-    var taifeng = 'url(../img/timg.jpg) 85% 6%';
+    var smog = 'url(../img/timg.jpg) 99% 6%';
+    var cloudy = 'url(../img/timg.jpg) 11% 6%';
+    var sunny = 'url(../img/timg.jpg) 0% 6%';
+    var rainstorm = 'url(../img/timg.jpg) 35% 22%';
+    var hail = 'url(../img/timg.jpg) 86% 23%';
+    var sandstorms = 'url(../img/timg.jpg) 100% 23%';
+    var typhoon = 'url(../img/timg.jpg) 85% 6%';
     //星期天
     if (p1 == 1) {
-        pic1.style.background = wumai;
-        pic2.style.background = duoyun;
-        pic3.style.background = qing;
-        pic4.style.background = baoyu;
-        pic5.style.background = bingbao;
-        pic6.style.background = shachenbao;
-        pic7.style.background = taifeng;
+        pic1.style.background = smog;
+        pic2.style.background = cloudy;
+        pic3.style.background = sunny;
+        pic4.style.background = rainstorm;
+        pic5.style.background = hail;
+        pic6.style.background = sandstorms;
+        pic7.style.background = typhoon;
     }
     if (p1 == 2) {
-        pic1.style.background = duoyun;
-        pic2.style.background = qing;
-        pic3.style.background = baoyu;
-        pic4.style.background = bingbao;
-        pic5.style.background = shachenbao;
-        pic6.style.background = taifeng;
-        pic7.style.background = wumai;
+        pic1.style.background = cloudy;
+        pic2.style.background = sunny;
+        pic3.style.background = rainstorm;
+        pic4.style.background = hail;
+        pic5.style.background = sandstorms;
+        pic6.style.background = typhoon;
+        pic7.style.background = smog;
     }
     if (p1 == 3) {
-        pic1.style.background = qing;
-        pic2.style.background = baoyu;
-        pic3.style.background = bingbao;
-        pic4.style.background = shachenbao;
-        pic5.style.background = taifeng;
-        pic6.style.background = wumai;
-        pic7.style.background = duoyun;
+        pic1.style.background = sunny;
+        pic2.style.background = rainstorm;
+        pic3.style.background = hail;
+        pic4.style.background = sandstorms;
+        pic5.style.background = typhoon;
+        pic6.style.background = smog;
+        pic7.style.background = cloudy;
     }
     if (p1 == 4) {
-        pic2.style.background = qing;
-        pic3.style.background = baoyu;
-        pic4.style.background = bingbao;
-        pic5.style.background = shachenbao;
-        pic6.style.background = taifeng;
-        pic7.style.background = wumai;
-        pic1.style.background = baoyu;
+        pic2.style.background = sunny;
+        pic3.style.background = rainstorm;
+        pic4.style.background = hail;
+        pic5.style.background = sandstorms;
+        pic6.style.background = typhoon;
+        pic7.style.background = smog;
+        pic1.style.background = rainstorm;
     }
     if (p1 == 5) {
-        pic3.style.background = qing;
-        pic4.style.background = baoyu;
-        pic5.style.background = bingbao;
-        pic6.style.background = shachenbao;
-        pic7.style.background = taifeng;
-        pic1.style.background = wumai;
-        pic2.style.background = duoyun;
+        pic3.style.background = sunny;
+        pic4.style.background = rainstorm;
+        pic5.style.background = hail;
+        pic6.style.background = sandstorms;
+        pic7.style.background = typhoon;
+        pic1.style.background = smog;
+        pic2.style.background = cloudy;
     }
     if (p1 == 6) {
-        pic4.style.background = qing;
-        pic5.style.background = baoyu;
-        pic6.style.background = bingbao;
-        pic7.style.background = shachenbao;
-        pic1.style.background = taifeng;
-        pic2.style.background = wumai;
-        pic3.style.background = duoyun;
+        pic4.style.background = sunny;
+        pic5.style.background = rainstorm;
+        pic6.style.background = hail;
+        pic7.style.background = sandstorms;
+        pic1.style.background = typhoon;
+        pic2.style.background = smog;
+        pic3.style.background = cloudy;
     }
     if (p1 == 7) {
-        pic5.style.background = qing;
-        pic6.style.background = baoyu;
-        pic7.style.background = bingbao;
-        pic1.style.background = shachenbao;
-        pic2.style.background = taifeng;
-        pic3.style.background = wumai;
-        pic4.style.background = duoyun;
+        pic5.style.background = sunny;
+        pic6.style.background = rainstorm;
+        pic7.style.background = hail;
+        pic1.style.background = sandstorms;
+        pic2.style.background = typhoon;
+        pic3.style.background = smog;
+        pic4.style.background = cloudy;
     }
 }
 //ajax
